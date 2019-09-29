@@ -1,0 +1,33 @@
+.todo-list {
+  border: 2px solid black;
+  width: 50%;
+}
+
+.task {
+  cursor: pointer;
+
+  background: red;
+  padding-left: 10px;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.todo-form {
+  background: blue;
+  width: 50%;
+  height: 15vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 10px; */
+}
+
+button {
+  height: 10vh;
+  font-weight: bold;
+  background: none;
+  border: 1px solid black;
+  cursor: pointer;
+}
