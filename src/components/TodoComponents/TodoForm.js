@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import SearchBar from './SearchBar';
 
 //Todo form needs:
 //1. a constructor with state taht has taskName
@@ -12,9 +13,8 @@ class TodoForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      newTask: ""
+      newTask: ''
     };
-    console.log("The new task is: ", this.state.newTask);
   }
 
   handleChanges = event => {
@@ -22,25 +22,27 @@ class TodoForm extends React.Component {
     this.setState({
       newTask: event.target.value
     });
+    console.log('The new task is: ', this.state.newTask);
   };
 
-  //this is where we call props.addTask
+  //this is where we call this.props.addTask
   passNewTask = event => {
     this.props.addTask(event, this.state.newTask);
     this.setState({
-      newTask: ""
+      newTask: ''
     });
   };
 
   render() {
     return (
-      <form className="todo-form" onSubmit={this.passNewTask} action="">
+      <form className='todo-form' onSubmit={this.passNewTask} action=''>
         <input
-          type="text"
-          name="task"
+          type='text'
+          name='task'
           value={this.state.newTask}
           onChange={this.handleChanges}
         />
+
         <button>Add to list</button>
       </form>
     );

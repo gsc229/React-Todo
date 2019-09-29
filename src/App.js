@@ -2,6 +2,7 @@ import React from 'react';
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
 import './components/TodoComponents/Todo.css';
+import SearchBar from './components/TodoComponents/SearchBar';
 
 /* const tasks = [
   {
@@ -40,22 +41,24 @@ class App extends React.Component {
         id: Date.now(),
         completed: false
       };
+
       /* function compare(a, b) {
-  if (a is less than b by some ordering criterion) {
-    return -1; (replace with turnary operator)
-  }
-  if (a is greater than b by the ordering criterion) {
-    return 1;
-  }
-  // a must be equal to b
-  return 0;
-} */
+                  if (a is less than b by some ordering criterion) {
+                    return -1; (replace with turnary operator)
+                  }
+                  if (a is greater than b by the ordering criterion) {
+                    return 1;
+                  }
+                  // a must be equal to b
+                  return 0;
+                } */
       const alphaList = [...this.state.tasks, currentTask].sort(function(
         taskA,
         taskB
       ) {
         return taskA.task.toLowerCase() < taskB.task.toLowerCase() ? -1 : 1;
       });
+
       this.setState({
         tasks: alphaList
       });
@@ -97,12 +100,18 @@ class App extends React.Component {
     return (
       <div className='App'>
         <h1>Todo List: </h1>
-        <TodoForm addTask={this.addTask} />
-        <TodoList
-          data={this.state.tasks}
+        <TodoForm searchTasks={this.searchTasks} addTask={this.addTask} />
+        <SearchBar
+          tasks={this.state.tasks}
           toggleComplete={this.toggleComplete}
           removeCompleted={this.removeCompleted}
         />
+        {/*   <TodoList
+          tasks={this.state.tasks}
+          searchTasks={this.searchTasks}
+          toggleComplete={this.toggleComplete}
+          removeCompleted={this.removeCompleted}
+        /> */}
       </div>
     );
   }
