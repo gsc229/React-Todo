@@ -1,25 +1,27 @@
-import React from "react";
-import TodoForm from "./components/TodoComponents/TodoForm";
-import TodoList from "./components/TodoComponents/TodoList";
-import "./components/TodoComponents/Todo.css";
+import React from 'react';
+import TodoForm from './components/TodoComponents/TodoForm';
+import TodoList from './components/TodoComponents/TodoList';
+import './components/TodoComponents/Todo.css';
 
-const tasks = [
+/* const tasks = [
   {
-    task: "Go to store",
+    task: 'Go to store',
     id: 1528817077286,
     completed: false
   },
   {
-    task: "Walk Dog",
+    task: 'Walk Dog',
     id: 1528817084358,
     completed: false
   },
   {
-    task: "Mow lawn",
+    task: 'Mow lawn',
     id: 1528817084360,
     completed: false
   }
-];
+]; */
+
+const tasks = JSON.parse(localStorage.getItem('tasks'));
 
 class App extends React.Component {
   constructor() {
@@ -28,10 +30,11 @@ class App extends React.Component {
       tasks
     };
   }
+
   //Will need an addTask event handler to take the input value, change the state, and update the list.
   addTask = (event, newTask) => {
     event.preventDefault();
-    if (newTask !== "") {
+    if (newTask !== '') {
       const currentTask = {
         task: newTask,
         id: Date.now(),
@@ -56,21 +59,25 @@ class App extends React.Component {
       this.setState({
         tasks: alphaList
       });
+      localStorage.setItem('tasks', JSON.stringify(alphaList));
     } else {
       alert("You didn't write a new task!");
     }
   };
+
   // Will need a removeCompleted event handler:
   removeCompleted = event => {
     event.preventDefault();
+    const filteredTasks = this.state.tasks.filter(item => !item.completed);
     this.setState({
-      tasks: this.state.tasks.filter(item => !item.completed)
+      tasks: filteredTasks
     });
+    localStorage.setItem('tasks', JSON.stringify(filteredTasks));
   };
 
   // toggle completed taskId comes from Todo.js div's onClick={() => toggleComplete(props.taskObj.id)}
   toggleComplete = taskId => {
-    console.log("App.js: App: toggleItem: ", taskId);
+    console.log('App.js: App: toggleItem: ', taskId);
     //setState() is a special method that is part of react components
     this.setState({
       tasks: this.state.tasks.map(item => {
@@ -88,7 +95,7 @@ class App extends React.Component {
   // this component is going to take care of state, and any change handlers you need to work with your state
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <h1>Todo List: </h1>
         <TodoForm addTask={this.addTask} />
         <TodoList
