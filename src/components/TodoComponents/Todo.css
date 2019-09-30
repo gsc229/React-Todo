@@ -1,6 +1,19 @@
+.App {
+  border: 2px solid yellow;
+  width: 50%;
+  margin: 0 auto;
+}
+
 .todo-list {
   border: 2px solid black;
-  width: 50%;
+
+  margin: 0 auto;
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .task {
@@ -15,17 +28,35 @@
 }
 
 .todo-form {
-  /* background: blue; */
-  width: 50%;
+  background: blue;
+  width: 100%;
+
+  margin: 0 auto;
   height: 15vh;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   /* padding: 10px; */
 }
 
+.todo-form input {
+  height: 4vh;
+}
+
+.search-bar {
+  border: 3px solid orange;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-input {
+  border: 2px solid green;
+  height: 30px;
+  margin: 20px auto;
+}
+
 button {
-  height: 10vh;
+  height: 5vh;
   font-weight: bold;
   background: none;
   border: 1px solid black;

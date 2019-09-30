@@ -22,6 +22,7 @@ class SearchBar extends React.Component {
     return (
       <div className='search-bar'>
         <input
+          className='search-input'
           placeholder='Search for task'
           name='searchTerm'
           value={this.state.searchTerm}

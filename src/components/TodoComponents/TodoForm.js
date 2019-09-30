@@ -1,5 +1,4 @@
 import React from 'react';
-import SearchBar from './SearchBar';
 
 //Todo form needs:
 //1. a constructor with state taht has taskName
